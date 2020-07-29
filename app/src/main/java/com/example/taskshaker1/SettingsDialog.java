@@ -47,9 +47,9 @@ public class SettingsDialog extends DialogFragment implements View.OnClickListen
         View v = inflater.inflate(R.layout.settings, null);
         v.findViewById(R.id.btn_share).setOnClickListener(this);
         v.findViewById(R.id.change_bg).setOnClickListener(this);
-        rg = (RadioGroup) v.findViewById(R.id.rg_settings);
+        rg = v.findViewById(R.id.rg_settings);
         rg.setOnCheckedChangeListener(this);
-        sm = (SensorManager) mainActivity.getSystemService(SENSOR_SERVICE);
+        sm = mainActivity.getSystemService(SENSOR_SERVICE);
         shakeDetector = new ShakeDetector(this);
 
 
@@ -62,7 +62,6 @@ public class SettingsDialog extends DialogFragment implements View.OnClickListen
         switch (checkedId) {
             case R.id.btn_1:
                 interface1.setFlag(SHAKE);
-//                shakeDetector.start(sm);
                 break;
             case R.id.btn_2:
                 interface1.setFlag(SWIPE);
@@ -87,8 +86,6 @@ public class SettingsDialog extends DialogFragment implements View.OnClickListen
             default:
                 break;
         }
-//        Log.d(LOG_TAG, "Dialog 1: " + ((Button) v).getText());
-//        dismiss();
     }
 
 
@@ -104,39 +101,4 @@ public class SettingsDialog extends DialogFragment implements View.OnClickListen
     public void hearShake() {
 
     }
-
-
-//    public Dialog onCreateDialog(Bundle savedInstanceState) {
-//
-//        AlertDialog.Builder builder=new AlertDialog.Builder(getActivity(), R.style.NewDialog);
-//
-//        return builder
-//                .setView(R.layout.settings)
-//                .create();
-
-
-
-
-//    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-//                             Bundle savedInstanceState) {
-//        getDialog().setTitle("Title!");
-//        View v = inflater.inflate(R.layout.dialog, null);
-//
-//        return v;
-//    }
-
-//    public void onClick(View v) {
-//        Log.d(LOG_TAG, "Dialog 1: " + ((Button) v).getText());
-//        dismiss();
-//    }
-//
-//    public void onDismiss(DialogInterface dialog) {
-//        super.onDismiss(dialog);
-//        Log.d(LOG_TAG, "Dialog 1: onDismiss");
-//    }
-//
-//    public void onCancel(DialogInterface dialog) {
-//        super.onCancel(dialog);
-//        Log.d(LOG_TAG, "Dialog 1: onCancel");
-//    }
 }
