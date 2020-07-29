@@ -27,7 +27,6 @@ public class MainActivity extends AppCompatActivity implements ShakeDetector.Lis
     private ImageView mImageView1, mImageView2, mImageView3, mImageView4, mImageView5;
     private ViewGroup containerView;
     private RelativeLayout.LayoutParams params;
-    private ImageView curFallingImageView;
     DialogFragment dlg1, settings;
     RelativeLayout relativeLayout;
     private GestureDetectorCompat gestureDetectorCompat = null;
@@ -64,13 +63,10 @@ public class MainActivity extends AppCompatActivity implements ShakeDetector.Lis
 
         Settings.setOnClickListener(this);
 
-        // Create a common gesture listener object.
         DetectSwipeGestureListener gestureListener = new DetectSwipeGestureListener();
 
-        // Set activity in the listener.
         gestureListener.setActivity(this);
 
-        // Create the gesture detector with the gesture listener.
         gestureDetectorCompat = new GestureDetectorCompat(this, gestureListener);
 
     }
@@ -96,9 +92,7 @@ public class MainActivity extends AppCompatActivity implements ShakeDetector.Lis
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         if (flag == SWIPE) {
-            // Pass activity on touch event to the gesture detector.
             gestureDetectorCompat.onTouchEvent(event);
-            // Return true to tell android OS that event has been consumed, do not pass it to other event listeners.
             return true;
         }
         return false;
@@ -125,7 +119,6 @@ public class MainActivity extends AppCompatActivity implements ShakeDetector.Lis
             params = (RelativeLayout.LayoutParams) mImageView5.getLayoutParams();
             v.setLayoutParams(params);
         }
-//
         containerView.addView(v);
         return v;
     }
@@ -152,66 +145,6 @@ public class MainActivity extends AppCompatActivity implements ShakeDetector.Lis
         mImageView5.clearAnimation();
     }
 
-//    Animation.AnimationListener animationFallingListener = new Animation.AnimationListener() {
-//
-//        @Override
-//        public void onAnimationEnd(Animation arg0) {
-//
-//            if (curFallingImageView == mImageView1) {
-//                mImageView1.startAnimation(upAnimation);
-//            } else if (curFallingImageView == mImageView2) {
-//                mImageView2.startAnimation(upAnimation);
-//            } else if (curFallingImageView == mImageView3) {
-//                mImageView3.startAnimation(upAnimation);
-//            } else if (curFallingImageView == mImageView4) {
-//                mImageView3.startAnimation(upAnimation);
-//            } else if (curFallingImageView == mImageView5) {
-//                mImageView3.startAnimation(upAnimation);
-//            }
-//        }
-//
-//        @Override
-//        public void onAnimationRepeat(Animation animation) {
-//        }
-//
-//        @Override
-//        public void onAnimationStart(Animation animation) {
-//        }
-//    };
-
-//    Animation.AnimationListener animationUpListener = new Animation.AnimationListener() {
-//
-//        @Override
-//        public void onAnimationEnd(Animation animation) {
-//            if (curFallingImageView == mImageView1) {
-//                curFallingImageView = mImageView2;
-//                mImageView2.startAnimation(fallingAnimation);
-//                mImageView1.setVisibility(View.INVISIBLE);
-//                mImageView2.setVisibility(View.VISIBLE);
-//                mImageView3.setVisibility(View.INVISIBLE);
-//            } else if (curFallingImageView == mImageView2) {
-//                curFallingImageView = mImageView3;
-//                mImageView3.startAnimation(fallingAnimation);
-//                mImageView1.setVisibility(View.INVISIBLE);
-//                mImageView2.setVisibility(View.INVISIBLE);
-//                mImageView3.setVisibility(View.VISIBLE);
-//            } else if (curFallingImageView == mImageView3) {
-//                curFallingImageView = mImageView1;
-//                mImageView1.startAnimation(fallingAnimation);
-//                mImageView1.setVisibility(View.VISIBLE);
-//                mImageView2.setVisibility(View.INVISIBLE);
-//                mImageView3.setVisibility(View.INVISIBLE);
-//            }
-//        }
-//
-//        @Override
-//        public void onAnimationRepeat(Animation animation) {
-//        }
-//
-//        @Override
-//        public void onAnimationStart(Animation animation) {
-//        }
-//    };
 
     @Override
     public void callDialogChangeBg() {
